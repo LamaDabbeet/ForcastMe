@@ -60,7 +60,6 @@ class _WeatherDetailsScreenState extends State<WeatherDetailsScreen> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -75,9 +74,9 @@ class _WeatherDetailsScreenState extends State<WeatherDetailsScreen> {
             )
           : Container(
               width: double.infinity,
-              color: ((_selectedDailyDetails.temp - 273.15) == 28)
+              color: ((_selectedDailyDetails.temp - 273.15).toInt() == 29)
                   ? ThemeColors.kLightGreen
-                  : (dailyWeatherDetails.temp - 273.15) > 28
+                  : (dailyWeatherDetails.temp - 273.15).toInt() > 29
                       ? ThemeColors.kLightOrange
                       : ThemeColors.kLightBlue,
               child: Container(
@@ -106,12 +105,15 @@ class _WeatherDetailsScreenState extends State<WeatherDetailsScreen> {
                                 height: screenHeight * 0.4,
                                 child: Image(
                                     image: ((_selectedDailyDetails.temp -
-                                                273.15) ==
-                                            28)
+                                                    273.15)
+                                                .toInt() ==
+                                            29)
                                         ? AssetImage('assets/images/cloudy.png')
-                                        : ((dailyWeatherDetails.temp - 273.15) >
-                                                28)
-                                            ? AssetImage('assets/images/sunny.png')
+                                        : ((dailyWeatherDetails.temp - 273.15)
+                                                    .toInt() >
+                                                29)
+                                            ? AssetImage(
+                                                'assets/images/sunny.png')
                                             : AssetImage(
                                                 'assets/images/rainy.png',
                                               )))),
